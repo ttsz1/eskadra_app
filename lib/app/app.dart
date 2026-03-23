@@ -5,18 +5,17 @@ import 'theme/app_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:eskadra_app/core/theme/app_theme_provider.dart';
 
-class EskadraApp extends ConsumerWidget {
+class EskadraApp extends StatelessWidget {
   const EskadraApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final themeController = ref.watch(appThemeControllerProvider);
-
+  Widget build(BuildContext context) {
     return MaterialApp.router(
+      title: 'Eskadra App',
       debugShowCheckedModeBanner: false,
-      themeMode: themeController.themeMode,
-      theme: ThemeData.light(useMaterial3: true),
-      darkTheme: ThemeData.dark(useMaterial3: true),
+      themeMode: ThemeMode.dark,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
       routerConfig: appRouter,
     );
   }
